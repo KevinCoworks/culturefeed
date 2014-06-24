@@ -127,15 +127,17 @@ function culturefeed_ui_activity_types() {
 function culturefeed_ui_activity_context($cnapi_types = array(), $node_types = array()) {
   $node = menu_get_object();
   $request = cnapi_ui_get_active_request();
-  $request_types = array_keys($request);
 
   if ($request) {
-    $type = reset(array_intersect($cnapi_types, $request_types));
-    if ($type) {
-      return array(
-        'node_id' => $request[$type],
-        'activity_content_type' => culturefeed_activity_content_type_from_cnapi_type($type),
-      );
+    $request_types = array_keys($request);
+    if ($request_types) {
+      $type = reset(array_intersect($cnapi_types, $request_types));
+      if ($type) {
+        return array(
+          'node_id' => $request[$type],
+          'activity_content_type' => culturefeed_activity_content_type_from_cnapi_type($type),
+        );
+      }
     }
   }
   elseif ($node) {
