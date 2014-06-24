@@ -215,10 +215,10 @@ function template_preprocess_culturefeed_ui_profile_box(&$variables) {
     $variables['link_profile'] = l('Mijn UiTiD', $url_profile);
   }
 
-  $variables['link_logout'] = l('Afmelden', 'user/logout');
-  $variables['link_login'] = l('Aanmelden', 'culturefeed/oauth/connect', array('attributes' => array('class' => array('culturefeedconnect')), 'query' => drupal_get_destination()));
-  $variables['link_register'] = l('Registreren', 'culturefeed/oauth/connect/register', array('attributes' => array('class' => array('culturefeedconnect')), 'query' => drupal_get_destination()));
-  $query = drupal_get_destination();
+  $variables['link_logout'] = l('Afmelden', 'user/logout', array('query' => array('destination' => current_path())));
+  $variables['link_login'] = l('Aanmelden', 'culturefeed/oauth/connect', array('attributes' => array('class' => array('culturefeedconnect')), 'query' => array('destination' => current_path() . '?utm_campaign=login&utm_source=uitinvlaanderen.be&utm_medium=topbar&utm_content=login')));
+  $variables['link_register'] = l('Registreren', 'culturefeed/oauth/connect/register', array('attributes' => array('class' => array('culturefeedconnect')), 'query' => array('destination' => current_path() . '?utm_campaign=login&utm_source=uitinvlaanderen.be&utm_medium=topbar&utm_content=register')));
+  $query['destination'] = current_path() . '?utm_campaign=login&utm_source=uitinvlaanderen.be&utm_medium=topbar&utm_content=facebook';
   $query['via'] = 'facebook';
   $variables['link_login_facebook'] = l('Facebook', 'culturefeed/oauth/connect', array('attributes' => array('class' => array('culturefeedconnect connect-facebook')), 'query' => $query));
 }
@@ -538,6 +538,7 @@ function template_preprocess_culturefeed_ui_my_uitid(&$variables) {
 function template_preprocess_culturefeed_ui_connect(&$variables) {
 
   $query['destination'] = isset($variables['url']) ? $variables['url'] : $_GET['q'];
+  $query['destination'] .= '?utm_campaign=login&utm_source=uitinvlaanderen.be&utm_medium=like-attend';
   $query['via'] = 'facebook';
   $variables['link_facebook'] = l('Facebook', 'culturefeed/oauth/connect', array('attributes' => array('class' => array('culturefeedconnect connect-facebook')), 'query' => $query));
 

@@ -125,7 +125,8 @@ function culturefeed_oauth_authorize($application_key = NULL) {
         print '</body>';
         print '</html>';
       }
-      else {
+      else {       
+        drupal_set_message('Welkom, je bent goed aangemeld.', 'success logged-in element-invisible');
         if (isset($_GET['destination'])) {
           drupal_goto($_GET['destination']);
         }
