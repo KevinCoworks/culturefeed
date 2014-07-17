@@ -538,7 +538,6 @@ function template_preprocess_culturefeed_ui_my_uitid(&$variables) {
 function template_preprocess_culturefeed_ui_connect(&$variables) {
 
   $query['destination'] = isset($variables['url']) ? $variables['url'] : $_GET['q'];
-  $query['destination'] .= '?utm_campaign=login&utm_source=uitinvlaanderen.be&utm_medium=like-attend';
   $query['via'] = 'facebook';
   $variables['link_facebook'] = l('Facebook', 'culturefeed/oauth/connect', array('attributes' => array('class' => array('culturefeedconnect connect-facebook')), 'query' => $query));
 
