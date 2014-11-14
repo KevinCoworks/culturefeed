@@ -216,9 +216,9 @@ function template_preprocess_culturefeed_ui_profile_box(&$variables) {
   }
 
   $variables['link_logout'] = l('Afmelden', 'user/logout', array('query' => array('destination' => current_path())));
-  $variables['link_login'] = l('Aanmelden', 'culturefeed/oauth/connect', array('attributes' => array('class' => array('culturefeedconnect')), 'query' => array('destination' => current_path() . '?utm_campaign=login&utm_source=uitinvlaanderen.be&utm_medium=topbar&utm_content=login')));
-  $variables['link_register'] = l('Registreren', 'culturefeed/oauth/connect/register', array('attributes' => array('class' => array('culturefeedconnect')), 'query' => array('destination' => current_path() . '?utm_campaign=login&utm_source=uitinvlaanderen.be&utm_medium=topbar&utm_content=register')));
-  $query['destination'] = current_path() . '?utm_campaign=login&utm_source=uitinvlaanderen.be&utm_medium=topbar&utm_content=facebook';
+  $variables['link_login'] = l('Aanmelden', 'culturefeed/oauth/connect', array('attributes' => array('class' => array('culturefeedconnect')), 'query' => array('destination' => current_path())));
+  $variables['link_register'] = l('Registreren', 'culturefeed/oauth/connect/register', array('attributes' => array('class' => array('culturefeedconnect')), 'query' => array('destination' => current_path())));
+  $query['destination'] = current_path();
   $query['via'] = 'facebook';
   $variables['link_login_facebook'] = l('Facebook', 'culturefeed/oauth/connect', array('attributes' => array('class' => array('culturefeedconnect connect-facebook')), 'query' => $query));
 }
